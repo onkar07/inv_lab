@@ -1,10 +1,10 @@
-package com.example.PhyLabInvMan.PhyLabInvMan;
+package com.example.Inv_Lab.Inv_Lab;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class PhyLabInvManApplicationTests {
+class InvLabApplicationTests {
 
 	@Test
 	void contextLoads() {

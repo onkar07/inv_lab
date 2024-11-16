@@ -1,13 +1,13 @@
-package com.example.PhyLabInvMan.PhyLabInvMan;
+package com.example.Inv_Lab.Inv_Lab;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PhyLabInvManApplication {
+public class InvLabApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PhyLabInvManApplication.class, args);
+		SpringApplication.run(InvLabApplication.class, args);
 	}
 
 }
