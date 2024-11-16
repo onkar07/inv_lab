@@ -5,7 +5,7 @@ import './Category.css'
 
 function category() {
     return (
-        <div>
+        <div className='cat'>
             <div className="name">
                 <p>Physics Laboratory</p>
             </div>
