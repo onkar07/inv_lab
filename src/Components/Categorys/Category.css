@@ -1,0 +1,21 @@
+   .name{
+    border: 1px solid black;
+    width: 250px;
+    height: 45px;
+    font-size: 25px;
+    display: inline-block;
+    margin-top: 10px;  
+}
+   .add{
+        display: flex;
+        flex-direction: row;
+
+    }
+
+    .cardsec{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: center;
+    }

@@ -16,8 +16,10 @@ function Login() {
                         {/* <label htmlFor="pass">password :</label> */}
                         <input type="password" id='pass' placeholder='password' />
                     </div>
+                    <div className="chck">
                     <input type="checkbox" />
                     <label htmlFor="">Show Password</label>
+                    </div>
 
                     <div className="submitformbtn">
 

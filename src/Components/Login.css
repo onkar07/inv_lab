@@ -64,6 +64,12 @@ input[type="password"] {
     font-size: 16px;
 }
 
+.chck{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
 
 .submitformbtn {
     display: flex;
