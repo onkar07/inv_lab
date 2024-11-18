@@ -3,10 +3,11 @@ import "./Login.css"
 
 function Login() {
     return (
-        <div class='logbody'>
+        <div className='logpage'>
+        <div classNamre='logbody'>
             <div className="form">
-            <div class="log">
-                <h1 class='h1log'>Login</h1>
+            <div className="log">
+                <h1 className='h1log'>Login</h1>
                 <form action="">
                     <div className="idpass">
 
@@ -27,13 +28,14 @@ function Login() {
                         <a href="#" class='forget'>Forget Password?</a>
 
 
-                        <p class='signup'>Don't have an account? <a href="#">Sign Up</a> </p>
+                        <p className='signup'>Don't have an account? <a href="#">Sign Up</a> </p>
                     </div>
                 </form>
 
 
             </div>
             </div>
+        </div>
         </div>
     )
 }
