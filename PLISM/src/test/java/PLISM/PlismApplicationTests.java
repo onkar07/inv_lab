@@ -1,10 +1,10 @@
-package com.example.Inv_Lab.Inv_Lab;
+package PLISM;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class InvLabApplicationTests {
+class PlismApplicationTests {
 
 	@Test
 	void contextLoads() {

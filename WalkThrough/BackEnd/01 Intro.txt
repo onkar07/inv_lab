@@ -1,0 +1,26 @@
+Project Name: 
+Physics Laboratory Invetory Management System  
+
+Project : Maven
+Language : Java
+Spring Boot : 3.3.5
+Group : com.Verligence
+Artifact: PLISM
+Name: PLISM
+Description : Physics Laboratory Inventory Management System
+Package name : PLISM
+Packaging : Jar
+java : 17
+
+Dependancies :
+Spring Web,
+Spring Data JPA,
+Spring Security,
+Validation I/O,
+Thymeleaf,
+MySQL Driverl,
+Spring Boot DevTools,
+Spring Boot Actuator,
+Spring Boot Starter Test
+JWT (jjwt library),
+Spring Security OAuth2

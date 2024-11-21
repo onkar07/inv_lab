@@ -1,13 +1,11 @@
-package com.example.Inv_Lab.Inv_Lab;
+package PLISM;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class InvLabApplication {
-
+public class PlismApplication {
 	public static void main(String[] args) {
-		SpringApplication.run(InvLabApplication.class, args);
+		SpringApplication.run(PlismApplication.class, args);
 	}
-
 }
