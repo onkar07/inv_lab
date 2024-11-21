@@ -63,20 +63,20 @@
 }
 
 .equipments {
-    width: 90%; /* Default width for smaller screens */
-    max-width: 600px; /* Limit width on larger screens */
-    height: auto; /* Allow height to adjust to content */
-    max-height: 80vh; /* Prevent overflow on smaller screens */
+    width: 90%; 
+    max-width: 600px;
+    height: auto; 
+    max-height: 80vh;
     background-color: #dddddd;
-    position: fixed; /* Fixed position for consistent centering */
+    position: fixed; 
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 20px;
-    padding: 20px; /* Add padding for inner spacing */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add shadow for better visibility */
-    overflow-y: auto; /* Enable scrolling if content exceeds max height */
-    box-sizing: border-box; /* Include padding in width/height calculations */
+    padding: 20px; 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+    overflow-y: auto; 
+    box-sizing: border-box;
 }
 
 /* Responsive Design */
