@@ -6,6 +6,9 @@ import Addequipment from './Addequipment'
 function ViewAll() {
     const [pop, setPop] = useState(false)
     const [pope, setPope] = useState(false)
+    const [item, setItem] = useState(null);
+
+
 
     const items = [
         { id: 1, name: "Multimeter", qty: "5", status: "ok", date: "19/02/2001" },
@@ -18,6 +21,11 @@ function ViewAll() {
         { id: 8, name: "Frequency Counter", qty: "6", status: "ok", date: "11/11/2022" }
     ];
 
+    const edit = (item_from_click) => {
+        setPope(true)
+        setItem(item_from_click)
+        console.log("Item selected : ",item)
+    }
 
     return (
         <div id='alltable' >
@@ -57,7 +65,7 @@ function ViewAll() {
                             <td>{item.status}</td>
                             <td>{item.date}</td>
                             <td style={{ color: 'blue' }}>
-                                <span style={{ cursor: "pointer" }} onClick={() => setPope(true)}  >Edit</span>  |
+                                <span style={{ cursor: "pointer" }} onClick={()=> edit(item)}  >Edit</span>  |
                                 <span style={{ cursor: "pointer" }} onClick={() => setPop(true)}>Delete</span></td>
                         </tr>
                     ))}
@@ -65,7 +73,7 @@ function ViewAll() {
 
             </div>
             {pop && <PopDelete onhide={() => setPop(false)} />}
-            {pope && <Addequipment ongo={() => setPope(false)} />}
+            {pope && <Addequipment ongo={() => setPope(false)} item={item} />}
 
         </div>
     )

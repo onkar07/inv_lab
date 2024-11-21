@@ -1,7 +1,19 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import './Addequipment.css'
 
-function Addequipment({ ongo }) {
+function Addequipment({ ongo, item }) {
+    console.log(item)
+    const nameRef = useRef(null);
+    const qtyRef = useRef(null);
+    const dateRef = useRef(null);
+
+    const updatedData = {
+        id: item.id,
+        name: nameRef.current.value,
+        qty: qtyRef.current.value,
+        date: dateRef.current.value,
+    };
+
     return (
         <div>
             <div className="equipments">
@@ -10,10 +22,12 @@ function Addequipment({ ongo }) {
                 <i onClick={ongo} className="fa-solid fa-xmark cross"></i>
 
                 <div className="info">
+<form action="">
 
 
-                    <label id='lab' htmlFor="">Name</label>
-                    <input id='inp' type="text" />
+
+                    <label id='lab' htmlFor="">item</label>
+                    <input id='inp' type="text" placeholder={item.name}  defaultValue={item.name} ref={nameRef} />
                     <br />
                     <label id='lab ' className='qtylab' htmlFor="">Quantity</label>
                     <input id='inp' className='qty' type="text" name="" />
@@ -39,6 +53,7 @@ function Addequipment({ ongo }) {
 
                     <label id='lab' htmlFor="">Date</label>
                     <input id='inp' type="date" />
+                    </form>
                 </div>
                 <div className="btnss" >
 
