@@ -1,5 +1,4 @@
-
-.popup {
+/* .popup {
     width: 50%;
     height: 60vh;
     background-color: #dddddd;
@@ -8,9 +7,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 20px;
-    /* display: block; */
 }
-#h2{
+
+#h2 {
     padding-top: 20px;
 }
 
@@ -24,7 +23,6 @@
 #inputsform {
     width: 85%;
     height: 36vh;
-    /* background-color: yellow; */
     margin-left: 38px;
     margin-top: 22px;
 }
@@ -42,7 +40,8 @@
 .work {
     padding-top: 15px;
 }
-.lable3{
+
+.lable3 {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -60,78 +59,79 @@
     margin-left: 39px;
     height: 35px;
 }
-.in3{
+
+.in3 {
     margin-left: 4%;
     margin-right: 47%;
 }
 
-.btns{
+.btns {
     display: flex;
     justify-content: space-evenly;
 }
- /* button 1 */
- #btn1 {
+
+#btn1 {
     width: 150px;
     height: 50px;
     cursor: pointer;
     display: flex;
     align-items: center;
-    background:  green;
+    background: green;
     border: none;
     border-radius: 5px;
-    box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
     background: green;
-   }
-      #btn1, #btn1 span {
+}
+
+#btn1,
+#btn1 span {
     transition: 200ms;
-   }
-   
-   #btn1 .text {
+}
+
+#btn1 .text {
     transform: translateX(35px);
     color: white;
     font-weight: bold;
-   }
-   
-   #btn1 .icon {
+}
+
+#btn1 .icon {
     position: absolute;
-    border-left: 1px solid  green;
+    border-left: 1px solid green;
     transform: translateX(110px);
     height: 40px;
     width: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-   }
-   
-   #btn1 svg {
+}
+
+#btn1 svg {
     width: 15px;
     fill: #eee;
-   }
-   
-   #btn1:hover {
-    background:  green;
-   }
-   
-   #btn1:hover .text {
+}
+
+#btn1:hover {
+    background: green;
+}
+
+#btn1:hover .text {
     color: transparent;
-   }
-   
-   #btn1:hover .icon {
+}
+
+#btn1:hover .icon {
     width: 150px;
     border-left: none;
     transform: translateX(0);
-   }
-   
-   #btn1:focus {
-    outline: none;
-   }
-   
-   #btn1:active .icon svg {
-    transform: scale(0.8);
-   }
+}
 
-/* Button Delete */
-/* From Uiverse.io by cssbuttons-io */ 
+#btn1:focus {
+    outline: none;
+}
+
+#btn1:active .icon svg {
+    transform: scale(0.8);
+}
+
 #btn2 {
     width: 150px;
     height: 50px;
@@ -141,20 +141,22 @@
     background: red;
     border: none;
     border-radius: 5px;
-    box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
     background: #e62222;
-   }
-      #btn2, #btn2 span {
+}
+
+#btn2,
+#btn2 span {
     transition: 200ms;
-   }
-   
-   #btn2 .text {
+}
+
+#btn2 .text {
     transform: translateX(35px);
     color: white;
     font-weight: bold;
-   }
-   
-   #btn2 .icon {
+}
+
+#btn2 .icon {
     position: absolute;
     border-left: 1px solid #c41b1b;
     transform: translateX(110px);
@@ -163,37 +165,37 @@
     display: flex;
     align-items: center;
     justify-content: center;
-   }
-   
-   #btn2 svg {
+}
+
+#btn2 svg {
     width: 15px;
     fill: #eee;
-   }
-   
-   #btn2:hover {
+}
+
+#btn2:hover {
     background: #ff3636;
-   }
-   
-   #btn2:hover .text {
+}
+
+#btn2:hover .text {
     color: transparent;
-   }
-   
-   #btn2:hover .icon {
+}
+
+#btn2:hover .icon {
     width: 150px;
     border-left: none;
     transform: translateX(0);
-   }
-   
-   #btn2:focus {
+}
+
+#btn2:focus {
     outline: none;
-   }
-   
-   #btn2:active .icon svg {
+}
+
+#btn2:active .icon svg {
     transform: scale(0.8);
-   }
+}
 
 
-  
+
 
 
 
@@ -239,8 +241,6 @@ From Uiverse.io by JaydipPrajapati1910 .toggle-button-cover {
     position: relative;
     top: 50%;
     width: 60px;
-    /* width: 74px; */
-    /* height: 36px; */
     height: 25px;
     margin: -20px auto 0 auto;
     overflow: hidden;
@@ -308,4 +308,241 @@ From Uiverse.io by JaydipPrajapati1910 .toggle-button-cover {
 
 #button-3 .checkbox:checked~.layer {
     background-color: #fcebeb;
+} */
+
+
+
+/* Popup Container */
+.popup {
+    width: 90%;
+    max-width: 500px;
+    height: auto;
+    max-height: 80vh;
+    background-color: #dddddd;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+}
+
+#h2 {
+    margin: 0;
+    padding-top: 10px;
+    text-align: center;
+}
+
+.cross {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#inputsform {
+    width: 90%;
+    margin: 20px auto;
+}
+
+.namee,
+.date,
+.work {
+    margin-top: 15px;
+}
+
+.label3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-left: 2%;
+}
+
+.in1,
+.in2,
+.in3 {
+    width: 100%;
+    height: 35px;
+    margin-top: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.btns {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+#btn1,
+#btn2 {
+    width: 45%;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+#btn1 {
+    background: green;
+}
+
+#btn1:hover {
+    background: darkgreen;
+}
+
+#btn2 {
+    background: red;
+}
+
+#btn2:hover {
+    background: darkred;
+}
+
+/* Toggle Button */
+.toggle-button-cover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 20px auto;
+    box-sizing: border-box;
+}
+
+.button-cover {
+    width: 60%;
+    height: 40px;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    position: relative;
+}
+
+.button {
+    width: 60px;
+    height: 25px;
+    margin: 7.5px auto;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.checkbox {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.knobs {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    z-index: 2;
+    transition: all 0.3s ease;
+    color: #fff;
+    background-color: #03a9f4;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.layer {
+    background-color: #ebf7fc;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 20px;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.checkbox:checked + .knobs {
+    left: calc(100% - 70px);
+    background-color: #f44336;
+}
+
+.checkbox:checked ~ .layer {
+    background-color: #fcebeb;
+}
+
+/* Responsive Media Queries */
+
+/* Small Devices (max-width: 576px) */
+@media (max-width: 576px) {
+    .popup {
+        width: 95%;
+        max-width: 350px;
+    }
+
+    #inputsform {
+        width: 95%;
+    }
+
+    .in1,
+    .in2,
+    .in3 {
+        width: 100%;
+    }
+
+    .btns {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #btn1,
+    #btn2 {
+        width: 100%;
+    }
+
+    .button-cover {
+        width: 80%;
+    }
+}
+
+/* Medium Devices (576px to 768px) */
+@media (min-width: 576px) and (max-width: 768px) {
+    .popup {
+        width: 80%;
+    }
+
+    #inputsform {
+        width: 90%;
+    }
+
+    .button-cover {
+        width: 70%;
+    }
+}
+
+/* Large Devices (768px and above) */
+@media (min-width: 768px) {
+    .popup {
+        width: 60%;
+    }
+
+    #inputsform {
+        width: 85%;
+    }
+
+    .button-cover {
+        width: 50%;
+    }
 }

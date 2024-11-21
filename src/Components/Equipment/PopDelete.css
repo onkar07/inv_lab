@@ -1,4 +1,4 @@
-.delete{
+/* .delete{
     width: 40%;
     height: 38vh;
     background-color: #dddddd;
@@ -7,6 +7,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 20px;
+    padding-left: 50px;
+    padding-right:40px;
 }
 
 #h3{
@@ -21,4 +23,95 @@ padding-top: 35px;
 
 #cross{
     margin-top: 10px;
+}
+ */
+
+
+ .delete {
+    width: 90%; /* Default for smaller screens */
+    max-width: 500px; /* Limit maximum width on larger screens */
+    height: auto; /* Auto-adjust height */
+    max-height: 80vh; /* Prevent overflow on smaller viewports */
+    background-color: #dddddd;
+    position: fixed; /* Keeps it centered during scroll */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+    padding: 20px; /* Adjust padding for better layout */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+    overflow-y: auto; /* Enable scrolling for large content */
+    box-sizing: border-box;
+    text-align: center; /* Center-align text */
+}
+
+#h3 {
+    margin: 0;
+    padding-top: 20px;
+    font-size: 1.5rem; /* Adjust font size for responsiveness */
+}
+
+#p {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 1rem; /* Use relative units for font size */
+    line-height: 1.5; /* Improve readability */
+    color: #333;
+}
+
+#cross {
+    margin-top: 15px;
+    font-size: 1rem;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#cross:hover {
+    background-color: #cc0000;
+}
+
+/* Responsive Adjustments */
+@media screen and (min-width: 768px) {
+    .delete {
+        width: 60%; /* Wider for tablets */
+        padding: 30px;
+    }
+
+    #h3 {
+        font-size: 1.8rem; /* Slightly larger font for tablets */
+    }
+
+    #p {
+        font-size: 1.1rem; /* Adjust text size for readability */
+    }
+
+    #cross {
+        font-size: 1.1rem;
+        padding: 12px 25px; /* Slightly larger button */
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .delete {
+        width: 40%; /* Original width for desktops */
+        height: 38vh; /* Fixed height */
+        padding: 40px; /* Increase padding for spacious layout */
+    }
+
+    #h3 {
+        font-size: 2rem; /* Larger text for big screens */
+    }
+
+    #p {
+        font-size: 1.2rem;
+    }
+
+    #cross {
+        font-size: 1.2rem;
+        padding: 15px 30px;
+    }
 }

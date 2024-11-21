@@ -1,4 +1,4 @@
-.equipments {
+/* .equipments {
     width: 50%;
     height: 70vh;
     background-color: #dddddd;
@@ -7,7 +7,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 20px;
-}
+} */
 
 
 .info {
@@ -54,11 +54,42 @@
 }
 
 .dropl {
-    /* padding-left: 8%; */
 }
 
 .btnss {
     display: flex;
     justify-content: space-evenly;
     margin-top: 20px;
+}
+
+.equipments {
+    width: 90%; /* Default width for smaller screens */
+    max-width: 600px; /* Limit width on larger screens */
+    height: auto; /* Allow height to adjust to content */
+    max-height: 80vh; /* Prevent overflow on smaller screens */
+    background-color: #dddddd;
+    position: fixed; /* Fixed position for consistent centering */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+    padding: 20px; /* Add padding for inner spacing */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add shadow for better visibility */
+    overflow-y: auto; /* Enable scrolling if content exceeds max height */
+    box-sizing: border-box; /* Include padding in width/height calculations */
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .equipments {
+        width: 95%; /* Increase width for smaller devices */
+        padding: 15px; /* Reduce padding for smaller screens */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .equipments {
+        padding: 10px; /* Further reduce padding for very small devices */
+        border-radius: 10px; /* Smaller border radius for compact screens */
+    }
 }
