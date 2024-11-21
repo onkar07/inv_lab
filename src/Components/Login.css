@@ -1,104 +1,147 @@
+/* General Styles for All Screens */
+.logpage {
+    margin-top: 110px;
+    margin-left: 30%;
+
+}
 
 .logbody {
-    /* margin: 0;
-    padding: 0;
-    box-sizing: 0; */
     width: 100%;
-    height: 650px;
-    /* background-image: url('/src/assest/render-abstract-black-crystal-ba.png'); */
+    height: 100vh;
     background-color: #342b2b;
     background-image: linear-gradient(45deg, #342b2b 0%, #424040 40%, #3b3e3e 60%, #2b2826 100%);
- 
-    
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-
-.h1log {
-    /* color: white; */
-}
-
 
 .log {
     border: 1px solid grey;
     border-radius: 40px 10px;
-    width: 35%;
-    height: 30rem;
-    margin-left: 32%;
-    /* margin-top: 7%; */
-    /* box shadow */
-    -webkit-box-shadow: 13px 12px 21px 11px rgba(0,0,0,0.26);
-    -moz-box-shadow: 13px 12px 21px 11px rgba(0,0,0,0.26);
-    box-shadow: 13px 12px 21px 11px rgba(0,0,0,0.26);
-
+    width: 90%;
+    max-width: 500px;
+    height: auto;
+    padding: 20px;
+    box-shadow: 13px 12px 21px 11px rgba(0, 0, 0, 0.26);
     background-color: white;
 }
 
 .idpass {
     display: flex;
-    /* align-content: center; */
     flex-direction: column;
     align-items: center;
-
+    gap: 15px;
 }
 
-input[type="email"] {
+input[type="email"], input[type="password"] {
     height: 40px;
-    width: 70%;
-    padding: 3px 10px;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    outline: none;
-    font-size: 16px;
-}
-
-input[type="password"] {
-    height: 40px;
-    width: 70%;
+    width: 90%;
+    max-width: 400px;
     padding: 3px 10px;
     border-top: none;
     border-left: none;
     border-right: none;
     outline: none;
     font-size: 16px;
-}
-
-.chck{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-}
-
-.submitformbtn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 #logbtn {
     height: 40px;
-    width: 75%;
-    padding: 3px 10px;
-    margin-top: 55px;
-    background-color: cornflowerblue;
+    width: 90%;
+    max-width: 400px;
+    margin-top: 30px;
+    background-image: linear-gradient(90deg, #3f4848 0%, #5d4b5d 42%, #735f5f 71%, #524a4a 100%);
     border: 1px solid grey;
     border-radius: 5px;
-    background-color: #3f4848;
-    background-image: linear-gradient(90deg, #3f4848 0%, #5d4b5d 42%, #735f5f 71%, #524a4a 100%);
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
 }
 
-.forget {
-    /* margin-top: 40px; */
-    margin-top: 50px;
+.forget, .signup {
+    margin-top: 20px;
+    text-align: center;
 }
 
-.signup {
-    margin-top: 0px;
-    /* background-color: #4158D0;
-    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%); */
 
 
+
+/* Responsive Design */
+
+@media (max-width: 480px) {
+    .logpage {
+        width: 100%;
+        margin-top: 80px;
+        margin-left: 20%;
+    }
+    .log {
+        width: 90%;
+        border-radius: 20px;
+    }
+
+    input[type="email"], input[type="password"], #logbtn {
+        font-size: 14px;
+    }
+
+    .forget, .signup {
+        font-size: 14px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .logpage {
+        margin-top: 80px;
+        margin-left: 18%;
+    }
+    .log {
+        width: 85%;
+    }
+
+    #logbtn {
+        font-size: 14px;
+    }
+}
+
+
+
+
+@media (max-width: 1024px) {
+    .logpage {
+        width: 100%;
+        margin-top: 80px;
+        margin-left: 25%;
+    }
+}
+
+
+
+/* Styles for Screens 1440px and Above */
+@media (min-width: 1440px) {
+    .logpage {
+        width: 100%;
+        margin-top: 80px;
+        margin-left: 35%;
+    }
+    .log {
+        width: 30%;
+        max-width: 600px;
+        padding: 30px;
+    }
+
+    input[type="email"], input[type="password"] {
+        width: 80%;
+        max-width: 500px;
+        font-size: 18px;
+    }
+
+    #logbtn {
+        width: 80%;
+        max-width: 500px;
+        font-size: 18px;
+    }
+
+    .forget, .signup {
+        font-size: 16px;
+    }
 }

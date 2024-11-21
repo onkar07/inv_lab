@@ -1,0 +1,24 @@
+.delete{
+    width: 40%;
+    height: 38vh;
+    background-color: #dddddd;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+}
+
+#h3{
+padding-top: 35px;
+}
+#p{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 20px;
+
+}
+
+#cross{
+    margin-top: 10px;
+}

@@ -4,10 +4,14 @@ import './Category.css'
 import PopupCat from './PopupCat'
 
 
+
 function Category() {
     const [show, setShow] = useState(false)
+   
     return (
         <div className='cat' style={{ width: '100%' }}>
+
+            
             <div className="name">
                 <p>Physics Laboratory</p>
             </div>
@@ -17,12 +21,11 @@ function Category() {
                     <i className="addico fa-solid fa-circle-plus"><p style={{ fontFamily: 'Arial' }}> New Category</p>   </i>
                 </div>
 
-                <p className='p' >Physics Lab Equipment Category</p>
+                <p className='p'  >Physics Lab Equipment Category</p>
             </div>
 
             <div className=" cardsec col-12 col-sm-6 col-md-4 col-lg-4 ">
                 <div className="row">
-
                     <Card />
                     <Card />
                     <Card />
@@ -39,7 +42,7 @@ function Category() {
                 </div>
             </div>
 
-            {show && <PopupCat onClose={()=>setShow(false)}/>}
+            {show && <PopupCat onClose={() => setShow(false)} />}
 
 
         </div>

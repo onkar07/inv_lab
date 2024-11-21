@@ -1,0 +1,17 @@
+#alltable{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.table {
+    width: 90%;
+    /* background-color: red; */
+    /* border: 1px solid black; */
+
+}
+
+table {
+    width: 100%;
+}

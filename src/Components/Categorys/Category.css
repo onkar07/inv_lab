@@ -1,3 +1,5 @@
+
+
 .name {
     border: 1px solid black;
     width: 250px;
@@ -38,10 +40,12 @@
 }
 
 .cardsec {
-    margin-left: 46px;
+    /* margin-left: 46px; */
+    margin-left: 22%;
     column-gap: 20px;
     row-gap: 20px;
     width: 100%;
+    
 }
 
 
@@ -145,3 +149,14 @@
         row-gap: 35px;
     }
 }
+
+
+
+/* @media (min-width: 1440px){
+    .cardsec{
+        margin-left: 23%;
+    }
+    .add{
+        margin-left: 14%;
+    }
+} */

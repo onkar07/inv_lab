@@ -24,7 +24,7 @@ function Login() {
 
                     <div className="submitformbtn">
 
-                        <button type='submit' id='logbtn'>Log In</button>
+                        <button type='submit' id='logbtn'>Log In</button> <br />
                         <a href="#" class='forget'>Forget Password?</a>
 
 
