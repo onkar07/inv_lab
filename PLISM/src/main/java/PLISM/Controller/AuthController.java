@@ -20,13 +20,19 @@ public class AuthController {
     @Autowired
     private JwtUtil jwtUtil;
 
+    // Registration endpoint
     @PostMapping("/register")
     public String registerUser(@RequestBody User user) {
+        // Hash the password before saving
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+        // Save the user
         userService.saveUser(user);
+
         return "User registered successfully!";
     }
 
+    // Login endpoint
     @PostMapping("/login")
     public String loginUser(@RequestBody User user) {
         User existingUser = userService.findByUsername(user.getUsername());

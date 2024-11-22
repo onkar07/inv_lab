@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -26,7 +28,14 @@ public class User {
     @Column(unique = true)
     private String email;
 
-    private String roles = "USER"; // Default role is "USER"
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
+    @Column(name = "role")
+    private Set<String> roles = new HashSet<>(); // Store roles as a Set to handle multiple roles per user
+
+    public User() {
+        roles.add("USER"); // Default role is "USER"
+    }
 
     // Getters and Setters
     public Long getId() {
@@ -61,11 +70,11 @@ public class User {
         this.email = email;
     }
 
-    public String getRoles() {
+    public Set<String> getRoles() {
         return roles;
     }
 
-    public void setRoles(String roles) {
+    public void setRoles(Set<String> roles) {
         this.roles = roles;
     }
 }
