@@ -22,9 +22,8 @@ public class JwtUtil {
     @Value("${jwt.expiration}")
     private long expirationTime;
 
-    // Generate JWT token
     public String generateToken(String username) {
-        // Create the key from the secret
+
         Key key = Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8)); // Create SecretKey for HS256
 
         return Jwts.builder()
@@ -35,30 +34,25 @@ public class JwtUtil {
                 .compact();
     }
 
-    // Extract username from the token
     public String extractUsername(String token) {
         Claims claims = parseClaimsJws(token);
         return claims.getSubject();
     }
 
-    // Check if the token is expired
     public boolean isTokenExpired(String token) {
         Date expiration = extractExpirationDate(token);
         return expiration.before(new Date());
     }
 
-    // Extract expiration date from the token
     public Date extractExpirationDate(String token) {
         Claims claims = parseClaimsJws(token);
         return claims.getExpiration();
     }
 
-    // Validate the token
     public boolean validateToken(String token, String username) {
         return (username.equals(extractUsername(token)) && !isTokenExpired(token));
     }
 
-    // Parse the JWT token to extract claims
     private Claims parseClaimsJws(String token) {
         JwtParser jwtParser = Jwts.parserBuilder()
                 .setSigningKey(secretKey.getBytes(StandardCharsets.UTF_8)) // Use byte[] for the secret key
