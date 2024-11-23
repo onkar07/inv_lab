@@ -8,7 +8,7 @@ import PLISM.Service.UserService;
 import PLISM.Security.JwtUtil;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 public class AuthController {
 
     @Autowired
@@ -35,6 +35,7 @@ public class AuthController {
     // Login endpoint
     @PostMapping("/login")
     public String loginUser(@RequestBody User user) {
+    	System.out.println(user.toString());
         User existingUser = userService.findByUsername(user.getUsername());
         if (existingUser != null && passwordEncoder.matches(user.getPassword(), existingUser.getPassword())) {
             return jwtUtil.generateToken(existingUser.getUsername());

@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "cateories")
+@Table(name = "categories") // Fixed table name typo from "cateories"
 public class Category {
 
     @Id
@@ -15,6 +15,10 @@ public class Category {
     @Column(nullable = false, unique = true)
     private String name;
 
+    @Column(nullable = true) // Added description column
+    private String description;
+
+    // Getters and setters
     public Long getId() {
         return id;
     }
@@ -31,4 +35,11 @@ public class Category {
         this.name = name;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

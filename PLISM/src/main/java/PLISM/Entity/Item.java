@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 @Entity
 @Table(name = "items")
 public class Item {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -54,5 +55,4 @@ public class Item {
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
-
 }

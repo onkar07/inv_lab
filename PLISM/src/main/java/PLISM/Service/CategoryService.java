@@ -14,18 +14,22 @@ public class CategoryService {
     @Autowired
     private CategoryRepository categoryRepository;
 
+    // Get all categories
     public List<Category> getAllCategories() {
         return categoryRepository.findAll();
     }
 
+    // Get category by ID
     public Optional<Category> getCategoryById(Long id) {
         return categoryRepository.findById(id);
     }
 
+    // Save a new or existing category
     public Category saveCategory(Category category) {
         return categoryRepository.save(category);
     }
 
+    // Delete category by ID
     public void deleteCategory(Long id) {
         categoryRepository.deleteById(id);
     }
