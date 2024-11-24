@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import './Addequipment.css'
 
 function Addequipment({ ongo, item }) {
@@ -7,13 +7,27 @@ function Addequipment({ ongo, item }) {
     const qtyRef = useRef(null);
     const dateRef = useRef(null);
 
-    const updatedData = {
-        id: item.id,
-        name: nameRef.current.value,
-        qty: qtyRef.current.value,
-        date: dateRef.current.value,
-    };
+    useEffect(() => {
+        if (item) {
+            nameRef.current.value = item.name || "";
+            qtyRef.current.value = item.qty || "";
+            dateRef.current.value = item.date || "";
+        }
+    }, [item]);
 
+    const submit = (e) => {
+        e.preventDefault();
+
+        // Access the values using refs
+        const updatedData = {
+            name: nameRef.current?.value || "", // Safe access with optional chaining
+            qty: qtyRef.current?.value || "",
+            date: dateRef.current?.value || "",
+        };
+
+        console.log("Updated Data:", updatedData);
+        ongo(); // Close the popup
+    };
     return (
         <div>
             <div className="equipments">
@@ -22,37 +36,37 @@ function Addequipment({ ongo, item }) {
                 <i onClick={ongo} className="fa-solid fa-xmark cross"></i>
 
                 <div className="info">
-<form action="">
 
+                    <form onSubmit="submit">
 
+                        <label id='lab' htmlFor="">item</label>
+                        <input id='inp' type="text" placeholder={item.name} defaultValue={item.name} ref={nameRef} />
+                        <br />
+                        <label id='lab ' className='qtylab' htmlFor="">Quantity</label>
+                        <input id='inp' className='qty' type="text" name="" ref={qtyRef} />
+                        <br />
+                        <div className="workd">
 
-                    <label id='lab' htmlFor="">item</label>
-                    <input id='inp' type="text" placeholder={item.name}  defaultValue={item.name} ref={nameRef} />
-                    <br />
-                    <label id='lab ' className='qtylab' htmlFor="">Quantity</label>
-                    <input id='inp' className='qty' type="text" name="" />
-                    <br />
-                    <div className="workd">
+                            <label className='worklab' htmlFor="">Working</label>
+                            <input type="checkbox" />
+                        </div>
+                        <br />
 
-                        <label className='worklab' htmlFor="">Working</label>
-                        <input type="checkbox" />
-                    </div>
-                    <br />
+                        <div className="cate">
 
-                    <div className="cate">
+                            <label id='lab' className='dropl' htmlFor="">Categoery</label>
+                            <select name="" className='drop' id="inp1">
+                                <option value="" disabled selected>-- Choose an Option --</option>
+                                <option value="">Physics</option>
+                                <option value="">Chemistry</option>
+                                <option value="">Mathematics</option>
+                            </select>
+                        </div>
+                        <br />
 
-                        <label id='lab' className='dropl' htmlFor="">Categoery</label>
-                        <select name="" className='drop' id="inp1">
-                            <option value="" disabled selected>-- Choose an Option --</option>
-                            <option value="">Physics</option>
-                            <option value="">Chemistry</option>
-                            <option value="">Mathematics</option>
-                        </select>
-                    </div>
-                    <br />
+                        <label id='lab' htmlFor="">Date</label>
+                        <input id='inp' type="date" ref={dateRef} />
 
-                    <label id='lab' htmlFor="">Date</label>
-                    <input id='inp' type="date" />
                     </form>
                 </div>
                 <div className="btnss" >
