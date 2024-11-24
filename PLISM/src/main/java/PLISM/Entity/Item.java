@@ -1,6 +1,7 @@
 package PLISM.Entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
@@ -11,19 +12,20 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    @NotBlank(message = "Item name is required")
     @Column(nullable = false)
     private String name;
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id", nullable = false)
+    @NotNull(message = "Category must not be null")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false) // `optional = false` ensures non-null constraint
+    @JoinColumn(name = "category_id", nullable = false, foreignKey = @ForeignKey(name = "FK_Item_Category"))
     private Category category;
 
-    @NotNull
+    @NotNull(message = "Quantity must not be null")
     @Column(nullable = false)
     private Integer quantity;
 
+    // Getters and Setters
     public Long getId() {
         return id;
     }

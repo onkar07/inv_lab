@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 @Entity
+// @Table(name = "cateories") // Fixed table name typo from "cateories"
 @Table(name = "categories") // Fixed table name typo from "cateories"
 public class Category {
 
