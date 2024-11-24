@@ -17,7 +17,7 @@ public class Item {
     private String name;
 
     @NotNull(message = "Category must not be null")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false) // `optional = false` ensures non-null constraint
+    @ManyToOne(fetch = FetchType.EAGER, optional = false) // `optional = false` ensures non-null constraint
     @JoinColumn(name = "category_id", nullable = false, foreignKey = @ForeignKey(name = "FK_Item_Category"))
     private Category category;
 
