@@ -1,147 +1,52 @@
-/* General Styles for All Screens */
-.logpage {
-    margin-top: 110px;
-    margin-left: 30%;
-
-}
-
-.logbody {
-    width: 100%;
-    height: 100vh;
-    background-color: #342b2b;
-    background-image: linear-gradient(45deg, #342b2b 0%, #424040 40%, #3b3e3e 60%, #2b2826 100%);
+.loginpage {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
+    background-color: #f2f2f2;
 }
 
-.log {
-    border: 1px solid grey;
-    border-radius: 40px 10px;
-    width: 90%;
-    max-width: 500px;
-    height: auto;
+.loginbody {
+    width: 350px;
     padding: 20px;
-    box-shadow: 13px 12px 21px 11px rgba(0, 0, 0, 0.26);
     background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.idpass {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
+.h1login {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
 }
 
-input[type="email"], input[type="password"] {
-    height: 40px;
-    width: 90%;
-    max-width: 400px;
-    padding: 3px 10px;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    outline: none;
-    font-size: 16px;
+.userdetails input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
-#logbtn {
-    height: 40px;
-    width: 90%;
-    max-width: 400px;
-    margin-top: 30px;
-    background-image: linear-gradient(90deg, #3f4848 0%, #5d4b5d 42%, #735f5f 71%, #524a4a 100%);
-    border: 1px solid grey;
-    border-radius: 5px;
-    font-size: 16px;
-    color: white;
-    cursor: pointer;
-}
-
-.forget, .signup {
-    margin-top: 20px;
+.submitformbtn {
     text-align: center;
 }
 
-
-
-
-/* Responsive Design */
-
-@media (max-width: 480px) {
-    .logpage {
-        width: 100%;
-        margin-top: 80px;
-        margin-left: 20%;
-    }
-    .log {
-        width: 90%;
-        border-radius: 20px;
-    }
-
-    input[type="email"], input[type="password"], #logbtn {
-        font-size: 14px;
-    }
-
-    .forget, .signup {
-        font-size: 14px;
-    }
+#loginbtn {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
-
-@media (max-width: 768px) {
-    .logpage {
-        margin-top: 80px;
-        margin-left: 18%;
-    }
-    .log {
-        width: 85%;
-    }
-
-    #logbtn {
-        font-size: 14px;
-    }
+#loginbtn:hover {
+    background-color: #45a049;
 }
 
-
-
-
-@media (max-width: 1024px) {
-    .logpage {
-        width: 100%;
-        margin-top: 80px;
-        margin-left: 25%;
-    }
-}
-
-
-
-/* Styles for Screens 1440px and Above */
-@media (min-width: 1440px) {
-    .logpage {
-        width: 100%;
-        margin-top: 80px;
-        margin-left: 35%;
-    }
-    .log {
-        width: 30%;
-        max-width: 600px;
-        padding: 30px;
-    }
-
-    input[type="email"], input[type="password"] {
-        width: 80%;
-        max-width: 500px;
-        font-size: 18px;
-    }
-
-    #logbtn {
-        width: 80%;
-        max-width: 500px;
-        font-size: 18px;
-    }
-
-    .forget, .signup {
-        font-size: 16px;
-    }
+.register {
+    margin-top: 10px;
+    color: #555;
 }

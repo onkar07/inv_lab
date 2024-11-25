@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Login from './Components/Login';
+import Register from './Components/Register';
 import Category from './Components/Categorys/Category';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import PopDelete from './Components/Equipment/PopDelete';
@@ -12,19 +13,19 @@ function App() {
     <div className="App">
       <Router>
         <Link to="/" ></Link>
+        <Link to="/reg" ></Link>
         <Link to="/category" ></Link>
         <link to="/view"></link>
 
         <Routes>
 
           <Route path='/' element={<Login />} />
+          <Route path='/reg' element={<Register />} />
           <Route path='/category' element={<Category />} />
           <Route path='/view' element={<ViewAll />} />
-        
         </Routes>
 
       </Router>
-
 
     </div>
   );

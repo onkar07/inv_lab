@@ -1,30 +1,42 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Card from './Card'
 import './Category.css'
 import PopupCat from './PopupCat'
-
-
+// import axios from 'axios'
+import axios from 'axios'
+// import cors from 'cors'; 
+import Api from '../../Api'
 
 function Category() {
     const [show, setShow] = useState(false)
+    const [mydata, setMydata] = useState([])
+    const [error, setError] = useState("")
+    // cors();
+    
+    const url = 'http://localhost:8080/categories'
 
-    const data = [
-        { title: "Multimeter", description: "This is the first card" },
-        { title: "Card 1", description: "This is the second card" },
-        { title: "Card 2", description: "This is the third card" },
-        { title: "Card 3", description: "This is the third card" },
-        { title: "Card 4", description: "This is the third card" },
-        { title: "Card 5", description: "This is the third card" },
-        { title: "Card 6", description: "This is the third card" },
-        { title: "Card 7", description: "This is the third card" },
-        { title: "Card 8", description: "This is the third card" },
-        { title: "Card 9", description: "This is the third card" },
-        { title: "Card 10", description: "This is the third card" },
-    ];
+    useEffect(() => {
+        const getdata = async () => {
+
+            try {
+                const res = await axios.get(url)
+                setMydata(res.data);
+                console.log(res.data)
+            } catch (error) {
+                setError(error.message)
+            }
+
+        }
+        getdata();
+        return () => {
+
+        }
+    }, [])
+
+    console.log(url)
 
     return (
         <div className='cat' style={{ width: '100%' }}>
-
 
             <div className="name">
                 <p>Physics Laboratory</p>
@@ -40,12 +52,14 @@ function Category() {
 
             <div className=" cardsec col-12 col-sm-6 col-md-4 col-lg-4 ">
                 <div className="row">
-                    {data.map((item, index) => (
-
-                        <Card key={index} title={item.title} description={item.description} />
-                    ))}
-
-                    
+                    {mydata.length > 0 ? (
+                        mydata.map((post) => {
+                            const { id, name, description } = post;
+                            return <Card key={id} title={name} body={description} />
+                        })
+                    ) :
+                        (<p>No categories available</p>)
+                    }
                 </div>
             </div>
 
