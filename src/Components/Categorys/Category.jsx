@@ -5,7 +5,7 @@ import PopupCat from './PopupCat'
 // import axios from 'axios'
 import axios from 'axios'
 // import cors from 'cors'; 
-import Api from '../../Api'
+import {fetchCategories } from '../../Api'
 
 function Category() {
     const [show, setShow] = useState(false)
@@ -15,25 +15,41 @@ function Category() {
     
     const url = 'http://localhost:8080/categories'
 
+    // useEffect(() => {
+    //     const getdata = async () => {
+
+    //         try {
+    //             const res = await axios.get(url)
+    //             setMydata(res.data);
+    //             console.log(res.data)
+    //         } catch (error) {
+    //             setError(error.message)
+    //         }
+
+    //     }
+    //     getdata();
+    //     return () => {
+
+    //     }
+    // }, [])
+
+    // console.log(url)
+
+
     useEffect(() => {
         const getdata = async () => {
-
             try {
-                const res = await axios.get(url)
-                setMydata(res.data);
-                console.log(res.data)
+                const res = await fetchCategories(); // Using the fetchCategories function
+                setMydata(res); // Store categories in state
+                console.log(res);
             } catch (error) {
-                setError(error.message)
+                setError(error.message);
+                console.error('Error fetching categories:', error);
             }
-
-        }
+        };
         getdata();
-        return () => {
+    }, []);
 
-        }
-    }, [])
-
-    console.log(url)
 
     return (
         <div className='cat' style={{ width: '100%' }}>
