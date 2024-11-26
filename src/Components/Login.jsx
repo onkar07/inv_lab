@@ -35,38 +35,26 @@ function Login() {
         e.preventDefault();
         setErrorMessage('');
 
-        try {
-            const data = await loginUser(formData); // Call login API
-            console.log('Login response:', data); // Log the response
 
-            if (data) {  // Ensure the token is present in the response
-                localStorage.setItem('token', data); // Store the token
+        try {
+            const data = await loginUser(formData);  // Call login API
+            console.log('Login response:', data);  // Log the response
+
+            // Check if the response contains success and the token
+            if (data?.success) {
+                // Store the token from response
+                localStorage.setItem('token', data.response);  // Store the token
                 console.log('Token stored in localStorage:', localStorage.getItem('token'));
-                navigate("/category"); // Redirect after successful login
+                navigate("/category");  // Redirect to the category page after successful login
             } else {
-                console.error('Login failed! Token missing from response.');
-                setErrorMessage('Login failed! Token missing.');
+                console.error('Login failed! Invalid response.');
+                setErrorMessage('Login failed! Invalid response.');
+
             }
         } catch (error) {
             console.error('Error during login:', error);
             setErrorMessage('Login failed! Please check your credentials.');
         }
-        // try {
-        //     const token = await loginUser(formData); // Call login API
-        //     console.log('Login response:', token); // Log the plain string token
-    
-        //     if (token) { // If the token is present
-        //         localStorage.setItem('token', token); // Store the token directly
-        //         console.log('Token stored in localStorage:', localStorage.getItem('token'));
-        //         navigate("/category"); // Redirect after successful login
-        //     } else {
-        //         console.error('Login failed! Token missing from response.');
-        //         setErrorMessage('Login failed! Token missing.');
-        //     }
-        // } catch (error) {
-        //     console.error('Error during login:', error);
-        //     setErrorMessage('Login failed! Please check your credentials.');
-        // }
     };
 
 

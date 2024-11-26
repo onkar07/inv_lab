@@ -36,19 +36,21 @@ function Category() {
     // console.log(url)
 
 
-    useEffect(() => {
-        const getdata = async () => {
-            try {
-                const res = await fetchCategories(); // Using the fetchCategories function
-                setMydata(res); // Store categories in state
-                console.log(res);
-            } catch (error) {
-                setError(error.message);
-                console.error('Error fetching categories:', error);
-            }
-        };
-        getdata();
-    }, []);
+    // useEffect(() => {
+    //     const getdata = async () => {
+    //         try {
+    //             const res = await fetchCategories(); // Using the fetchCategories function
+    //             setMydata(res); // Store categories in state
+    //             console.log(res);
+    //         } catch (error) {
+    //             setError(error.message);
+    //             console.error('Error fetching categories:', error);
+    //         }
+    //     };
+    //     getdata();
+    // }, []);
+
+    
 
 
     return (
