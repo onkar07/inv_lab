@@ -39,8 +39,8 @@ function Login() {
             const data = await loginUser(formData); // Call login API
             console.log('Login response:', data); // Log the response
 
-            if (data ?.token) {  // If the token is directly returned
-                localStorage.setItem('token', data); // Store the token directly
+            if (data) {  // Ensure the token is present in the response
+                localStorage.setItem('token', data); // Store the token
                 console.log('Token stored in localStorage:', localStorage.getItem('token'));
                 navigate("/category"); // Redirect after successful login
             } else {
@@ -51,6 +51,22 @@ function Login() {
             console.error('Error during login:', error);
             setErrorMessage('Login failed! Please check your credentials.');
         }
+        // try {
+        //     const token = await loginUser(formData); // Call login API
+        //     console.log('Login response:', token); // Log the plain string token
+    
+        //     if (token) { // If the token is present
+        //         localStorage.setItem('token', token); // Store the token directly
+        //         console.log('Token stored in localStorage:', localStorage.getItem('token'));
+        //         navigate("/category"); // Redirect after successful login
+        //     } else {
+        //         console.error('Login failed! Token missing from response.');
+        //         setErrorMessage('Login failed! Token missing.');
+        //     }
+        // } catch (error) {
+        //     console.error('Error during login:', error);
+        //     setErrorMessage('Login failed! Please check your credentials.');
+        // }
     };
 
 

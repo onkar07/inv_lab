@@ -23,10 +23,10 @@ function App() {
   return (
     <div className="App">
       <Router>
-        {/* <Link to="/" ></Link>
+        <Link to="/" ></Link>
         <Link to="/reg" ></Link>
         <Link to="/category" ></Link>
-        <link to="/view"></link> */}
+        <link to="/view"></link>
 
         <Routes>
 
