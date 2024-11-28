@@ -5,7 +5,7 @@ const apiUrl = 'http://localhost:8080';
 // Login User API call
 const loginUser = async (loginData) => {
     try {
-        const response = await axios.post(`${apiUrl}/api/auth/login`, loginData); // Use backticks here
+        const response = await axios.post(`${apiUrl}/login`, loginData); // Use backticks here
         alert('Login successful:', response.data);
         return response.data;
     } catch (error) {
@@ -19,12 +19,17 @@ const loginUser = async (loginData) => {
 // Helper to get Authorization headers
 const getAuthHeaders = () => {
     const token = localStorage.getItem('token');
+ 
+    if (!token) {
+        console.log('No token found in localStorage!')
+        throw new Error('No token found in localStorage!');
+        
+    }
     return {
         headers: {
-            Authorization: `Bearer ${token}` // Use backticks here
-        }
+            Authorization: `Bearer ${token}`, // Add Bearer token to the Authorization header
+        },
     };
- 
 };
 
 // Fetch Secured Categories Example
@@ -38,22 +43,22 @@ const fetchCategories = async () => {
     // }
 
     try {
-        const token = localStorage.getItem('token');  // Get the token from localStorage
+        const token = localStorage.getItem('token'); // Get the token from localStorage
 
         if (!token) {
             throw new Error("No token found in localStorage!");
         }
 
-        const response = await axios.get('http://localhost:8080/categories', {
+        const response = await axios.get('http://localhost:8080/api/categories', {
             headers: {
-                Authorization: `Bearer ${token}`  // Include the token as Bearer in the Authorization header
-            }
+                Authorization: `Bearer ${token}`, // Include token in Authorization header
+            },
         });
 
-        return response.data;  // Return the categories data from the response
+        return response.data; // Return categories
     } catch (error) {
         console.error('Error fetching categories:', error);
-        throw error;  // Rethrow error so it can be handled in the component
+        throw error; // Rethrow error for component to handle
     }
 };
 

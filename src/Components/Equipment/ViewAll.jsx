@@ -10,22 +10,15 @@ function ViewAll() {
 
 
 
-    const items = [
-        { id: 1, name: "Multimeter", qty: "5", status: "ok", date: "19/02/2001" },
-        { id: 2, name: "Oscilloscope", qty: "3", status: "ok", date: "15/08/2020" },
-        { id: 3, name: "Power Supply", qty: "8", status: "maintenance", date: "01/12/2022" },
-        { id: 4, name: "Soldering Iron", qty: "10", status: "ok", date: "25/05/2023" },
-        { id: 5, name: "Thermal Camera", qty: "2", status: "ok", date: "12/10/2021" },
-        { id: 6, name: "Clamp Meter", qty: "7", status: "ok", date: "03/03/2023" },
-        { id: 7, name: "Signal Generator", qty: "4", status: "calibration", date: "20/06/2020" },
-        { id: 8, name: "Frequency Counter", qty: "6", status: "ok", date: "11/11/2022" }
-    ];
-
     const edit = (item_from_click) => {
         setPope(true)
         setItem(item_from_click)
         console.log("Item selected : ",item)
     }
+
+
+    const [details, setDetails] = useState(null);
+    const [isOpen, setIsOpen] = useState(false);
 
     return (
         <div id='alltable' >

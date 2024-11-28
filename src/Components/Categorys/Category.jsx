@@ -5,52 +5,49 @@ import PopupCat from './PopupCat'
 // import axios from 'axios'
 import axios from 'axios'
 // import cors from 'cors'; 
-import {fetchCategories } from '../../Api'
+import { fetchCategories } from '../../Api'
 
 function Category() {
     const [show, setShow] = useState(false)
-    const [mydata, setMydata] = useState([])
+    const [myData, setMyData] = useState(null)
+    const [mycat, setMycat] = useState([])
     const [error, setError] = useState("")
+
     // cors();
-    
+
     const url = 'http://localhost:8080/categories'
 
-    // useEffect(() => {
-    //     const getdata = async () => {
 
-    //         try {
-    //             const res = await axios.get(url)
-    //             setMydata(res.data);
-    //             console.log(res.data)
-    //         } catch (error) {
-    //             setError(error.message)
-    //         }
+    useEffect(() => {
+        let data = JSON.stringify({
+            "username": "Ganesh",
+            "password": "password123",
+            "email": "Ganesh@example.com"
+        });
+        const token = localStorage.getItem('token');
+        let config = {
+            method: 'get',
+            maxBodyLength: Infinity,
+            url: 'http://localhost:8080/categories',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            data: data
+        };
 
-    //     }
-    //     getdata();
-    //     return () => {
+        axios.request(config)
+            .then((response) => {
+                setMycat(response.data)
+                console.log(JSON.stringify(response.data));
+            })
+            .catch((error) => {
+                console.log(error);
+            });
 
-    //     }
-    // }, [])
-
-    // console.log(url)
+    }, []);
 
 
-    // useEffect(() => {
-    //     const getdata = async () => {
-    //         try {
-    //             const res = await fetchCategories(); // Using the fetchCategories function
-    //             setMydata(res); // Store categories in state
-    //             console.log(res);
-    //         } catch (error) {
-    //             setError(error.message);
-    //             console.error('Error fetching categories:', error);
-    //         }
-    //     };
-    //     getdata();
-    // }, []);
-
-    
 
 
     return (
@@ -70,10 +67,10 @@ function Category() {
 
             <div className=" cardsec col-12 col-sm-6 col-md-4 col-lg-4 ">
                 <div className="row">
-                    {mydata.length > 0 ? (
-                        mydata.map((post) => {
+                    {mycat.length > 0 ? (
+                        mycat.map((post) => {
                             const { id, name, description } = post;
-                            return <Card key={id} title={name} body={description} />
+                            return <Card key={id} title={name}  />
                         })
                     ) :
                         (<p>No categories available</p>)
