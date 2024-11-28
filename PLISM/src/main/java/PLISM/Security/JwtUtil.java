@@ -4,6 +4,7 @@ import java.security.Key;
 import java.util.Date;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtParser;
@@ -22,7 +23,7 @@ public class JwtUtil {
 
     private Key SECRET_KEY = SecretKeyGenerator(); // Call the method to get the key
 
-    private static final long EXPIRATION_TIME = 86400000; // 1 day in milliseconds
+    private static final long EXPIRATION_TIME = 86400000;
 
     private final JwtProperties jwtProperties;
 
@@ -94,5 +95,13 @@ public class JwtUtil {
                 .setSigningKey(SECRET_KEY) // Use the SECRET_KEY directly
                 .build();
         return jwtParser.parseClaimsJws(token).getBody();
+    }
+
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/api/**") // Adjust the endpoint as needed
+                .allowedOrigins("http://localhost:3000") // Allow frontend origin
+                .allowedMethods("GET", "POST", "PUT", "DELETE") // Allow necessary methods
+                .allowedHeaders("*") // Allow all headers
+                .allowCredentials(true); // Allow credentials (e.g., cookies, authorization headers)
     }
 }

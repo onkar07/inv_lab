@@ -39,9 +39,12 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http)
 	  throws Exception {
     	 http
+    	 .cors().and()
     	 .csrf().disable() // Disable CSRF for simplicity; consider enabling it in production.
          .authorizeHttpRequests(authz -> authz
-                 .requestMatchers("/api/auth/**").permitAll() // Allow unauthenticated access to /api/auth/** endpoints
+//                 .requestMatchers("/api/auth/*").permitAll()
+                 .requestMatchers("/*").permitAll() // Allow unauthenticated access to /api/auth/* endpoints
+                 
                  .anyRequest().authenticated())
          .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class); // Add the JWT filter
 
