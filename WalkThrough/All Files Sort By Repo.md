@@ -334,9 +334,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import PLISM.Entity.Item;
+import PLISM.Entity.Category; // Import Category entity
 import PLISM.Service.ItemService;
+import PLISM.Service.CategoryService; // Import CategoryService
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -346,6 +348,46 @@ public class ItemController {
 
     @Autowired
     private ItemService itemService;
+
+    @Autowired
+    private CategoryService categoryService; // Inject CategoryService
+
+    @PostMapping
+    public ResponseEntity<Item> createItem(@RequestBody Item item) {
+        item.setDate(new Date()); // Set the current date when creating the item
+
+        // Fetch the category based on the category ID provided in the request
+        Category category = categoryService.getCategoryById(item.getCategory().getId()).orElse(null);
+
+        if (category != null) {
+            item.setCategory(category); // Set the category to the item
+            return ResponseEntity.ok(itemService.saveItem(item));
+        }
+        return ResponseEntity.badRequest().body(null); // Return bad request if category not found
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Item> updateItem(@PathVariable Long id, @RequestBody Item updatedItem) {
+        Optional<Item> item = itemService.getItemById(id);
+        if (item.isPresent()) {
+            Item existingItem = item.get();
+            existingItem.setName(updatedItem.getName());
+            existingItem.setQuantity(updatedItem.getQuantity());
+            existingItem.setStatus(updatedItem.isStatus());
+            existingItem.setDate(updatedItem.getDate()); // Update date if needed
+
+            // Fetch the category based on the ID from the request
+            Category category = categoryService.getCategoryById(updatedItem.getCategory().getId()).orElse(null);
+            if (category != null) {
+                existingItem.setCategory(category); // Set the category
+            } else {
+                return ResponseEntity.badRequest().body(null); // Return bad request if category not found
+            }
+
+            return ResponseEntity.ok(itemService.saveItem(existingItem));
+        }
+        return ResponseEntity.notFound().build();
+    }
 
     @GetMapping
     public List<Item> getAllItems() {
@@ -358,38 +400,10 @@ public class ItemController {
         return item.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PostMapping
-    public ResponseEntity<Item> createItem(@RequestBody Item item) {
-        item.setDate(LocalDate.now()); // Set current date
-        Item savedItem = itemService.saveItem(item);
-        return ResponseEntity.ok(savedItem);
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<Item> updateItem(@PathVariable Long id, @RequestBody Item updatedItem) {
-        Optional<Item> existingItem = itemService.getItemById(id);
-        if (existingItem.isPresent()) {
-            Item item = existingItem.get();
-            item.setName(updatedItem.getName());
-            item.setQuantity(updatedItem.getQuantity());
-            item.setStatus(updatedItem.getStatus());
-            item.setDate(updatedItem.getDate()); // Allow updating the date
-            itemService.saveItem(item);
-            return ResponseEntity.ok(item);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteItem(@PathVariable Long id) {
-        Optional<Item> existingItem = itemService.getItemById(id);
-        if (existingItem.isPresent()) {
-            itemService.deleteItem(id);
-            return ResponseEntity.ok("Item deleted successfully!");
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    public ResponseEntity<Void> deleteItem(@PathVariable Long id) {
+        itemService.deleteItem(id);
+        return ResponseEntity.noContent().build();
     }
 }
 ```  
@@ -448,37 +462,35 @@ public class Category {
 ```java
 package PLISM.Entity;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import java.util.Date;
 
-import java.time.LocalDate;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
-@Table(name = "items")
 public class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Item name is required")
-    @Column(nullable = false)
     private String name;
 
-    @NotNull(message = "Quantity must not be null")
-    @Column(nullable = false)
     private Integer quantity;
 
-    @NotBlank(message = "Status is required")
-    @Column(nullable = false)
-    private String status;
+    private boolean status; // new field to represent item status
 
-    @NotNull(message = "Date must not be null")
-    @Column(nullable = false)
-    private LocalDate date;
+    private Date date; // new field to represent the date the item was added
 
-    // Getters and Setters
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category;
+
+    // Getters and setters for all fields
     public Long getId() {
         return id;
     }
@@ -503,20 +515,28 @@ public class Item {
         this.quantity = quantity;
     }
 
-    public String getStatus() {
+    public boolean isStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }
 ```  
