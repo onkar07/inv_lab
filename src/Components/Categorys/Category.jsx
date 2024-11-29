@@ -6,13 +6,13 @@ import PopupCat from './PopupCat'
 import axios from 'axios'
 // import cors from 'cors'; 
 import { fetchCategories } from '../../Api'
-
+import { Navigate, useNavigate } from 'react-router-dom'
 function Category() {
+    const navigate = useNavigate();
     const [show, setShow] = useState(false)
     const [myData, setMyData] = useState(null)
     const [mycat, setMycat] = useState([])
     const [error, setError] = useState("")
-
     // cors();
 
     const url = 'http://localhost:8080/categories'
@@ -43,7 +43,8 @@ function Category() {
             })
             .catch((error) => {
                 console.log(error);
-            });
+            }
+        );
 
     }, []);
 
@@ -70,7 +71,10 @@ function Category() {
                     {mycat.length > 0 ? (
                         mycat.map((post) => {
                             const { id, name, description } = post;
-                            return <Card key={id} title={name}  />
+                            console.log(typeof(id),id)
+                            return <div onClick={()=> navigate(`/view/${id}`)} >
+                            <Card key={id} title={name.slice(0,20)} />
+                            </div>
                         })
                     ) :
                         (<p>No categories available</p>)

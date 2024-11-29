@@ -35,7 +35,7 @@ function App() {
           {/* <Route path='/category' element={<Category />} /> */}
           <Route path='/category' element={<ProtectedRoute> <Category /> </ProtectedRoute>} />
 
-          <Route path='/view' element={<ViewAll />} />
+          <Route path='/view/:id' element={<ViewAll />} />
         </Routes>
 
       </Router>
