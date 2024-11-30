@@ -1,7 +1,6 @@
 package PLISM.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +9,6 @@ import PLISM.Service.UserService;
 import PLISM.Security.JwtUtil;
 
 @RestController
-//@RequestMapping("/api/auth")
 @RequestMapping("")
 public class AuthController {
 
@@ -23,41 +21,38 @@ public class AuthController {
     @Autowired
     private JwtUtil jwtUtil;
 
-    // Registration endpoint
     @PostMapping("/register")
-    public String registerUser(@RequestBody User user) {
-        // Hash the password before saving
+    public ResponseEntity<String> registerUser(@RequestBody User user) {
+        if (userService.existsByUsername(user.getUsername())) {
+            return ResponseEntity.badRequest().body("Username is already taken.");
+        }
+
+        if (userService.existsByEmail(user.getEmail())) {
+            return ResponseEntity.badRequest().body("Email is already registered.");
+        }
+
+        // Hash the password and set default role
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        if (user.getRoles().isEmpty()) {
+            user.getRoles().add("USER"); // Default role
+        }
 
-        // Save the user
         userService.saveUser(user);
-
-        return "User registered successfully!";
+        return ResponseEntity.ok("User registered successfully!");
     }
 
-    // Login endpoint
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@RequestBody User user) {
-        // Log the incoming user data
-        System.out.println(user.toString());
-
-        // Find user by username
         User existingUser = userService.findByUsername(user.getUsername());
-
-        // Check if the user exists and the password matches
-        if (existingUser != null && passwordEncoder.matches(user.getPassword(), existingUser.getPassword())) {
-            // Generate and return JWT token if credentials are valid
-            String token = jwtUtil.generateToken(existingUser.getUsername());
-
-            // Return success response with the token
-            return ResponseEntity.ok(new AuthResponse(true, token));
-        } else {
-            // Return failure response with error message
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new AuthResponse(false, "Invalid username or password!"));
+        if (existingUser == null || !passwordEncoder.matches(user.getPassword(), existingUser.getPassword())) {
+            return ResponseEntity.status(401).body("Invalid username or password!");
         }
+
+        // Generate JWT token
+        String token = jwtUtil.generateToken(existingUser.getUsername());
+        return ResponseEntity.ok(new AuthResponse(true, token));
     }
 
-    // Custom response class to structure the response
     public static class AuthResponse {
         private boolean isSuccess;
         private String response;

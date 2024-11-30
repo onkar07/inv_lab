@@ -15,6 +15,14 @@ public class UserService {
         userRepository.save(user);
     }
 
+    public boolean existsByUsername(String username) {
+        return userRepository.existsByUsername(username);
+    }
+
+    public boolean existsByEmail(String email) {
+        return userRepository.existsByEmail(email);
+    }
+
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }

@@ -70,6 +70,16 @@ public class ItemController {
         return item.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
+    // Updated Endpoint for fetching items by category
+    @GetMapping("/categories/{categoryId}")
+    public ResponseEntity<List<Item>> getItemsByCategory(@PathVariable Long categoryId) {
+        List<Item> items = itemService.getItemsByCategoryId(categoryId);
+        if (items.isEmpty()) {
+            return ResponseEntity.noContent().build(); // Return 204 if no items found
+        }
+        return ResponseEntity.ok(items);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteItem(@PathVariable Long id) {
         itemService.deleteItem(id);

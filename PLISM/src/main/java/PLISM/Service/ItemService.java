@@ -22,6 +22,10 @@ public class ItemService {
         return itemRepository.findById(id);
     }
 
+    public List<Item> getItemsByCategoryId(Long categoryId) {
+        return itemRepository.findByCategoryId(categoryId);
+    }
+
     public Item saveItem(Item item) {
         return itemRepository.save(item);
     }

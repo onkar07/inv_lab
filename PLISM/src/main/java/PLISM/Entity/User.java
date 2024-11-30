@@ -31,13 +31,13 @@ public class User {
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
     @Column(name = "role")
-    private Set<String> roles = new HashSet<>(); // Store roles as a Set to handle multiple roles per user
+    private Set<String> roles = new HashSet<>();
 
     public User() {
-        roles.add("USER"); // Default role is "USER"
+        // Default constructor
     }
 
-    // Getters and Setters
+    // Add Getters and Setters
     public Long getId() {
         return id;
     }
